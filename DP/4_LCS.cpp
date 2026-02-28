@@ -52,7 +52,10 @@ int longestCommonSubsequence2(string text1, string text2) {
 
 int main(){
     
+    string text1 = "catsdogsandandcat";
+    string text2 = "catsandog";
 
+    cout<<longestCommonSubsequence2(text1, text2);
 
     return 0;
 }
