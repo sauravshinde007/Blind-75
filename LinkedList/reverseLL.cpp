@@ -21,7 +21,7 @@ struct Node{
         this->data = data;
         this->next = next;
     }
-}
+};
 
 //Method 1: Reverse Links of each node
 Node* reverseLL(Node* head){
@@ -46,6 +46,30 @@ Node* reverseLL(Node* head){
     }
 
     return Prev;
+}
+
+//Method 2: Stack Method
+Node* reverseLL(Node* head){
+    stack<Node*> st;
+        Node* curr = head;
+
+        while(curr != NULL){
+            st.push(curr);
+            curr = curr->next;
+        }
+
+        Node* dummyNode = new Node(0);
+        Node* temp = dummyNode;
+
+        while(!st.empty()){
+            temp->next = st.top();
+            st.pop();
+            temp = temp ->next;
+        }
+
+        temp->next = NULL;
+
+        return dummyNode->next;
 }
 
 

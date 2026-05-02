@@ -10,7 +10,7 @@ using namespace std;
 
 int maxArea(vector<int>& height) {
     int n = height.size(); //no of heights
-    int maxA = INT_MIN;
+    int maxA = 0; //as area is always positive, we can initialize it with 0
 
     int left = 0;
     int right = n-1;

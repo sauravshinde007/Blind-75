@@ -10,20 +10,21 @@ using namespace std;
 int maxSubArray(vector<int>& nums) {
         int n = nums.size();
 
-        int result = nums[0];
-        int maxEnd = nums[0]; //represents sum till the prev of curr element
+        int maxi = nums[0];
+        int prevSum = nums[0]; //sum till previous element
 
+        //Kadane's Algorithm
         for(int i=1; i<n; i++){
-            int currentSum = maxEnd + nums[i];
-            result = max(result, currentSum);
+            int currSum = prevSum + nums[i];
 
-            //If currentSum is less than curr then no point in 
-            // extending this (start over from curr element)
-            if(currentSum < nums[i]) maxEnd = nums[i];
-            else maxEnd += nums[i];
+            //if currSum is less that the curr element then no point in extending the subarray
+            if(currSum < nums[i]) prevSum = nums[i]; //start new subarray
+            else prevSum += nums[i]; //extend subarray
+
+            maxi = max(maxi, prevSum);
         }
 
-    return result;
+        return maxi;
 }
 
 int main(){
